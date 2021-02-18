@@ -7,82 +7,80 @@ import { colors } from '../../constants';
 import styles from './styles';
 
 export class Dashboard extends Component {
+    async componentDidMount() {
+        // try {
+        //   console.log('mount11')
+        //   let response = await fetch(
+        //     'http://test.chatongo.in/testdata.json'
+        //   );
+        //   let data = await response.json();
+        //   console.log(data)
+        // } catch (error) {
+        //   console.log({error})
+        // }
+        // Request.get().then((response)=>{
+        //   console.log('res',response)
+        // }).catch((e)=>console.log({e}))
+    }
 
-  async componentDidMount() {
-    // try {
-    //   console.log('mount11')
-    //   let response = await fetch(
-    //     'http://test.chatongo.in/testdata.json'
-    //   );
-    //   let data = await response.json();
-    //   console.log(data)
+    render() {
+        const data = [
+            {
+                image: 'https://dummyimage.com/vga',
+                title: 'Smile Crowfunding',
+                description: 'This foundation will bring smile on these faces',
+                funds: 500,
+                goals: 5000,
+                ends: 36,
+                category: 'PLEDGE'
+            },
+            {
+                image: 'https://dummyimage.com/wuxga',
+                title: 'Smile Crowfunding',
+                description: 'This foundation will bring smile on these faces',
+                funds: 500,
+                goals: 5000,
+                ends: 36,
+                category: 'PLEDGE'
+            },
+            {
+                image: 'https://picsum.photos/200/300?grayscale',
+                title: 'Smile Crowfunding',
+                description: 'This foundation will bring smile on these faces',
+                funds: 500,
+                goals: 5000,
+                ends: 36,
+                category: 'PLEDGE'
+            },
+            {
+                image: 'https://picsum.photos/200/300?grayscale',
+                title: 'Smile Crowfunding',
+                description: 'This foundation will bring smile on these faces',
+                funds: 500,
+                goals: 5000,
+                ends: 36,
+                category: 'PLEDGE'
+            }
+        ];
 
-    // } catch (error) {
-    //   console.log({error})
-    // }
-    // Request.get().then((response)=>{
-    //   console.log('res',response)
-    // }).catch((e)=>console.log({e}))
-  }
-
-  render() {
-    const data = [
-      {
-        image: "https://picsum.photos/200/300?grayscale",
-        title: "Smile Crowfunding",
-        description: "This foundation will bring smile on these faces",
-        funds: 500,
-        goals: 5000,
-        ends: 36,
-        category: "PLEDGE"
-      },
-      {
-        image: "https://picsum.photos/200/300?grayscale",
-        title: "Smile Crowfunding",
-        description: "This foundation will bring smile on these faces",
-        funds: 500,
-        goals: 5000,
-        ends: 36,
-        category: "PLEDGE"
-      },
-      {
-        image: "https://picsum.photos/200/300?grayscale",
-        title: "Smile Crowfunding",
-        description: "This foundation will bring smile on these faces",
-        funds: 500,
-        goals: 5000,
-        ends: 36,
-        category: "PLEDGE"
-      },
-      {
-        image: "https://picsum.photos/200/300?grayscale",
-        title: "Smile Crowfunding",
-        description: "This foundation will bring smile on these faces",
-        funds: 500,
-        goals: 5000,
-        ends: 36,
-        category: "PLEDGE"
-      }
-    ]
-
-    return (
-      <View>
-        <StatusBar
-          animated={true}
-          backgroundColor={colors.black}
-          barStyle={"light-content"}
-        />
-        <View style={styles.container}>
-          <Text style={styles.heading}>Record List</Text>
-        </View>
-        <ScrollView>
-          {data.map((item, index) => {
-            return (
-              <Card key={index} {...item} />
-            )
-          })}
-        </ScrollView>
-      </View>
-    );
-  }
+        return (
+            <View style={styles.mainContainer}>
+                <StatusBar
+                    animated={true}
+                    backgroundColor={colors.black}
+                    barStyle={'light-content'}
+                />
+                <View style={styles.container}>
+                    <Text style={styles.heading}>Record List</Text>
+                </View>
+                <ScrollView>
+                    <View style={styles.cards}>
+                        {data.map((item, index) => {
+                            return <Card key={index} {...item} />;
+                        })}
+                    </View>
+                </ScrollView>
+            </View>
+        );
+    }
 }

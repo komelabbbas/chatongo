@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import { colors, indianRupees } from '../../constants'
-import { Image } from '../Image'
-import styles from './styles'
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+import { colors, indianRupees } from '../../constants';
+import { Image } from '../Image';
+import styles from './styles';
 
 export class Card extends Component {
     render() {
-        const { image: url, funds, goals, ends, category } = this.props
+        const { image: url, funds, goals, ends, category } = this.props;
         return (
             <View style={styles.container}>
                 <Image url={url} />
@@ -26,26 +26,22 @@ export class Card extends Component {
                                 </Text>
                             </View>
                             <View style={[styles.row, styles.amountLabels]}>
-                                <Text style={styles.amountTitle}>
-                                    FUNDED
-                                </Text>
-                                <Text style={styles.amountTitle}>
-                                    GOALS
-                                 </Text>
-                                <Text style={styles.amountTitle}>
-                                    ENDS IN
-                             </Text>
+                                <Text style={styles.amountTitle}>FUNDED</Text>
+                                <Text style={styles.amountTitle}>GOALS</Text>
+                                <Text style={styles.amountTitle}>ENDS IN</Text>
                             </View>
                         </View>
 
                         <View style={styles.center}>
                             <View style={styles.category}>
-                                <Text style={styles.categoryText}>{category}</Text>
+                                <Text style={styles.categoryText}>
+                                    {category}
+                                </Text>
                             </View>
                         </View>
                     </View>
                 </View>
             </View>
-        )
+        );
     }
 }
