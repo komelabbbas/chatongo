@@ -7,62 +7,23 @@ import { colors } from '../../constants';
 import styles from './styles';
 
 export class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: []
+        };
+    }
+
     async componentDidMount() {
-        // try {
-        //   console.log('mount11')
-        //   let response = await fetch(
-        //     'http://test.chatongo.in/testdata.json'
-        //   );
-        //   let data = await response.json();
-        //   console.log(data)
-        // } catch (error) {
-        //   console.log({error})
-        // }
-        // Request.get().then((response)=>{
-        //   console.log('res',response)
-        // }).catch((e)=>console.log({e}))
+        Request.get()
+            .then((response) => {
+                this.setState({ data: response.data.Records });
+            })
+            .catch((e) => {});
     }
 
     render() {
-        const data = [
-            {
-                image: 'https://dummyimage.com/vga',
-                title: 'Smile Crowfunding',
-                description: 'This foundation will bring smile on these faces',
-                funds: 500,
-                goals: 5000,
-                ends: 36,
-                category: 'PLEDGE'
-            },
-            {
-                image: 'https://dummyimage.com/wuxga',
-                title: 'Smile Crowfunding',
-                description: 'This foundation will bring smile on these faces',
-                funds: 500,
-                goals: 5000,
-                ends: 36,
-                category: 'PLEDGE'
-            },
-            {
-                image: 'https://picsum.photos/200/300?grayscale',
-                title: 'Smile Crowfunding',
-                description: 'This foundation will bring smile on these faces',
-                funds: 500,
-                goals: 5000,
-                ends: 36,
-                category: 'PLEDGE'
-            },
-            {
-                image: 'https://picsum.photos/200/300?grayscale',
-                title: 'Smile Crowfunding',
-                description: 'This foundation will bring smile on these faces',
-                funds: 500,
-                goals: 5000,
-                ends: 36,
-                category: 'PLEDGE'
-            }
-        ];
-
+        console.log(this.state.data);
         return (
             <View style={styles.mainContainer}>
                 <StatusBar
@@ -75,7 +36,7 @@ export class Dashboard extends Component {
                 </View>
                 <ScrollView>
                     <View style={styles.cards}>
-                        {data.map((item, index) => {
+                        {this.state.data.map((item, index) => {
                             return <Card key={index} {...item} />;
                         })}
                     </View>

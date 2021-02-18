@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import moment from 'moment';
 import { colors, indianRupees } from '../../constants';
 import { Image } from '../Image';
 import styles from './styles';
 
 export class Card extends Component {
     render() {
-        const { image: url, funds, goals, ends, category } = this.props;
+        const {
+            mainImageURL: url,
+            collectedValue,
+            totalValue,
+            startDate,
+            endDate
+        } = this.props;
+
+        const date1 = moment(startDate, 'DD.MM.YYYY');
+        const date2 = moment(endDate, 'DD.MM.YYYY');
+        const endsIn = date2.diff(date1, 'days');
+
         return (
             <View style={styles.container}>
                 <Image url={url} />
@@ -16,27 +28,30 @@ export class Card extends Component {
                         <View style={{ flex: 1 }}>
                             <View style={styles.row}>
                                 <Text style={styles.amountValue}>
-                                    {indianRupees(funds)}
+                                    {indianRupees(collectedValue)}
                                 </Text>
                                 <Text style={styles.amountValue}>
-                                    {indianRupees(goals)}
+                                    {indianRupees(totalValue)}
                                 </Text>
-                                <Text style={styles.amountValue}>
-                                    {indianRupees(ends)}
-                                </Text>
+                                <Text style={styles.amountValue}>{endsIn}</Text>
                             </View>
                             <View style={[styles.row, styles.amountLabels]}>
                                 <Text style={styles.amountTitle}>FUNDED</Text>
-                                <Text style={styles.amountTitle}>GOALS</Text>
+                                <Text
+                                    style={[
+                                        styles.amountTitle,
+                                        styles.textCenter
+                                    ]}
+                                >
+                                    GOALS
+                                </Text>
                                 <Text style={styles.amountTitle}>ENDS IN</Text>
                             </View>
                         </View>
 
                         <View style={styles.center}>
                             <View style={styles.category}>
-                                <Text style={styles.categoryText}>
-                                    {category}
-                                </Text>
+                                <Text style={styles.categoryText}>PLEDGE</Text>
                             </View>
                         </View>
                     </View>

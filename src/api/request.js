@@ -1,9 +1,8 @@
-
 type IProps = {
     path: string,
     method?: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE',
     headers?: Object,
-    body?: Object,
+    body?: Object
 };
 
 export default class Request {
@@ -27,36 +26,35 @@ export default class Request {
         return this.request({ method: 'PATCH', ...params });
     }
 
-
     static async request({
         path,
         method,
         body,
         headers = {},
-        fullResponse = false,
+        fullResponse = false
     }: IProps) {
-        const url = "http://test.chatongo.in/testdata.json"
+        const url = 'https://testffc.nimapinfotech.com/testdata.json';
 
         const defaultHeaders = {
-                'Content-Type': 'application/json',
-            };
+            'Content-Type': 'application/json'
+        };
 
         const options = {
             method,
             body: JSON.stringify(body),
-            headers: { ...defaultHeaders, ...headers },
+            headers: { ...defaultHeaders, ...headers }
         };
 
-        fetch('http://example.com/movies.json')
-  .then(response => response.json())
-  .then(data => {
-    console.log({data})
-    return data;
-  }).catch((e)=> {
-      console.log({e})
-      return e
-  })
+        return fetch(url, options).then((response) => {
+            if (response.ok) {
+                if (response.status === 204) {
+                    return Promise.resolve();
+                } else {
+                    return response.json().then((v) => v);
+                }
+            }
 
-
+            throw response;
+        });
     }
 }

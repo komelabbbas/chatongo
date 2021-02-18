@@ -19,7 +19,7 @@ export class Image extends Component {
             loading = (
                 <ActivityIndicator
                     size="large"
-                    color={colors.primary}
+                    color={colors.white}
                     style={{
                         position: 'absolute',
                         width: SCREEN_WIDTH,

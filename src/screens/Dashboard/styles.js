@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.black,
         paddingBottom: 15,
-        paddingVertical: 40,
-        paddingHorizontal: 10
+        paddingVertical: 50,
+        paddingHorizontal: 15
     },
     heading: {
         fontSize: 22,
