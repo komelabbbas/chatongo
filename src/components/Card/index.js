@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image as RnImage } from 'react-native';
 import moment from 'moment';
 import { colors, indianRupees } from '../../constants';
 import { Image } from '../Image';
@@ -8,6 +8,8 @@ import styles from './styles';
 export class Card extends Component {
     render() {
         const {
+            title,
+            shortDescription,
             mainImageURL: url,
             collectedValue,
             totalValue,
@@ -27,11 +29,13 @@ export class Card extends Component {
                     <View style={styles.row}>
                         <View style={{ flex: 1 }}>
                             <View style={styles.row}>
+                                <Text style={styles.symbol}>₹</Text>
                                 <Text style={styles.amountValue}>
-                                    {indianRupees(collectedValue)}
+                                    {collectedValue}
                                 </Text>
+                                <Text style={styles.symbol}>₹</Text>
                                 <Text style={styles.amountValue}>
-                                    {indianRupees(totalValue)}
+                                    {totalValue}
                                 </Text>
                                 <Text style={styles.amountValue}>{endsIn}</Text>
                             </View>
@@ -55,6 +59,30 @@ export class Card extends Component {
                             </View>
                         </View>
                     </View>
+                </View>
+
+                <View style={styles.absoluteContainer}>
+                    <View style={styles.content}>
+                        <View style={styles.heading}>
+                            <Text style={styles.title}>{title}</Text>
+                            <Text style={styles.description}>
+                                {shortDescription}
+                            </Text>
+                        </View>
+                        <View style={styles.likeContainer}>
+                            <RnImage
+                                style={styles.likeImage}
+                                source={require('../../assets/heart.png')}
+                            />
+                        </View>
+                    </View>
+
+                    <View style={styles.circleContainer}>
+                        <View style={styles.circle}>
+                            <Text style={styles.circleText}>100 %</Text>
+                        </View>
+                    </View>
+                    <View></View>
                 </View>
             </View>
         );

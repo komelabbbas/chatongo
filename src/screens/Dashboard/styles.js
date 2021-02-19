@@ -1,5 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../constants';
+import {
+    colors,
+    isAndroidPlatform,
+    SCREEN_HEIGHT,
+    SCREEN_WIDTH
+} from '../../constants';
 
 const styles = StyleSheet.create({
     mainContainer: {
@@ -18,7 +23,14 @@ const styles = StyleSheet.create({
         color: colors.white
     },
     cards: {
-        marginBottom: 160
+        marginBottom: isAndroidPlatform() ? 200 : 170
+    },
+    loader: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: SCREEN_WIDTH,
+        height: SCREEN_HEIGHT,
+        marginTop: -50
     }
 });
 

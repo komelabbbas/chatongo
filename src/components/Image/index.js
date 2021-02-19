@@ -36,7 +36,9 @@ export class Image extends Component {
             <>
                 {loading}
                 <FastImage
-                    source={{ uri: url }}
+                    source={{
+                        uri: url
+                    }}
                     style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT / 3 }}
                     resizeMode="stretch"
                     onLoad={() => this.setState({ loading: false })}
